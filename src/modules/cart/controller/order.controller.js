@@ -1,4 +1,4 @@
-import { ApiFeatures } from "../../../utils/ApiFeatures.js"
+
 import Stripe from 'stripe';
 import { AppError, catchAsyncError } from "../../../utils/error.handler.js"
 import productModel from "../../product/models/product.model.js"
@@ -10,8 +10,7 @@ dotenv.config()
 const stripe = new Stripe(process.env.STRIPE_SECRET);
 
 export const getUserOrders=catchAsyncError(async(req,res)=>{
-const apif=new ApiFeatures(orderModel.findOne({user_id:req.user.id})).paginate(10)
-const orders=await apif.query
+const orders=await orderModel.findOne({user_id:req.user.id})
 res.json({orders})
 })
 

@@ -1,16 +1,12 @@
 import express from "express";
 import { catchAsyncError } from "../../../utils/error.handler.js";
 import userModel from "../models/user.model.js";
-import { ApiFeatures } from "../../../utils/ApiFeatures.js";
 
 
 
 
 export const getAllUser=catchAsyncError(async (req,res)=>{
-    const apiFeatures = new ApiFeatures(userModel.find(), req.query).paginate(
-		10
-	)
-	const users = await apiFeatures.query
+	const users = await auserModel.find()
 	res.json({ users })
 })
 

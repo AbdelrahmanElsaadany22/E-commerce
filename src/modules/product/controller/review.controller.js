@@ -1,4 +1,4 @@
-import { ApiFeatures } from "../../../utils/ApiFeatures.js";
+
 import { catchAsyncError } from "../../../utils/error.handler.js";
 import productModel from "../models/product.model.js";
 import reviewModel from "../models/review.model.js";
@@ -9,8 +9,8 @@ const product=await productModel.findOne({slug:productSlug})
 if(!product){
     res.status(404).json({message:"Product not founded"})
 }
-const apiFeatures=new ApiFeatures(reviewModel,req.query)
-const reviews=await apiFeatures.query
+
+const reviews=await reviewModel.find()
 res.json({reviews})
 })
 export const addReview = catchAsyncError(async (req, res) => {

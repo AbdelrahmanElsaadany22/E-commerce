@@ -1,5 +1,4 @@
 
-import { ApiFeatures } from "../../../utils/ApiFeatures.js";
 import { catchAsyncError } from "../../../utils/error.handler.js";
 import couponModel from "../models/coupon.model.js";
 export const addCoupon=catchAsyncError(async(req,res)=>{
@@ -8,8 +7,7 @@ export const addCoupon=catchAsyncError(async(req,res)=>{
 })
 
 export const getAllCoupons = catchAsyncError(async (req, res) => {
-	const apiFeatures = new ApiFeatures(couponModel.find(), req.query)
-	const coupons = await apiFeatures.query
+	const coupons = await couponModel.find()
 	res.status(201).json({ coupons })
 })
 

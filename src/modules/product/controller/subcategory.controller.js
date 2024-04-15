@@ -1,4 +1,4 @@
-import { ApiFeatures } from "../../../utils/ApiFeatures.js";
+
 import { catchAsyncError } from "../../../utils/error.handler.js";
 import categoryModel from "../models/category.model.js";
 import subcategoryModel from "../models/subcategory.model.js";
@@ -31,9 +31,7 @@ export const getSubcategories=catchAsyncError(async(req,res)=>{
     {
     res.status(404).json({message:"Category not found"})
     }
-    const apifeatures=new ApiFeatures(subcategoryModel.find({category_id: category._id}),
-    req.query).paginate(10)
-    const subcategories = await apifeatures.query
+    const subcategories = await subcategoryModel.find({category_id: category._id})
 	res.json({ subcategories })
 })
 
