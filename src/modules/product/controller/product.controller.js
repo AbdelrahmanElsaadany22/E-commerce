@@ -5,7 +5,7 @@ import { catchAsyncError } from '../../../utils/error.handler.js'
 import { makeImage } from '../../image/utils/image.utils.js'
 import subcategoryModel from '../models/subcategory.model.js'
 import { ApiFeatures } from '../../../utils/ApiFeatures.js'
-
+import imageOnProductModel from '../models/imageOnProduct.model.js'
 
 
 
