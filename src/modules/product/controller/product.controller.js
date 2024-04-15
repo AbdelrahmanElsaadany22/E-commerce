@@ -10,8 +10,7 @@ import imageOnProductModel from '../models/imageOnProduct.model.js'
 
 
 export const getAllProduct=catchAsyncError(async(req,res,next)=>{
-	const apiFeature = new ApiFeatures(productModel.find(), req.query)
-	const products = await apiFeature.query
+	const products = await productModel.find()
 	res.json({ products })
 })
 export const getProduct = catchAsyncError(async (req, res, next) => {
