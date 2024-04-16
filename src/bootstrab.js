@@ -4,9 +4,32 @@ import express from 'express'
 import morgan from 'morgan'
 import { AppError, catchAsyncError } from './utils/error.handler.js'
 import v1Router from './routers/v1.routes.js'
-
+import stripe from 'stripe'
 const bootstrap = (app) =>
  {
+	app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+		const sig = request.headers['stripe-signature'];
+	  
+		let event;
+	  
+		try {
+		  event = stripe.webhooks.constructEvent(
+			request.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+		} catch (err) {
+		  response.status(400).send(`Webhook Error: ${err.message}`);
+		  return;
+		}
+		switch (event.type) {
+		  case 'checkout.session.completed':
+			const checkoutSessionCompleted = event.data.object;
+			break;
+		  default:
+			console.log(`Unhandled event type ${event.type}`);
+		}
+		response.send();
+	  });
+	  
+
 	app.use(express.json())
 	app.use(morgan('dev'))
 
