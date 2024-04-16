@@ -20,7 +20,7 @@ const bootstrap = (app) =>
 		const { message, status, stack } = err
 		res.status(status || 500).json({
 			message,
-			...((process.env.MODE === 'development' || process.env.MODE === 'deployment')&& { stack }),
+			...(process.env.MODE === 'development'&& { stack }),
 		})
 	})
 }
