@@ -35,7 +35,8 @@
 - **Product:** Fetch all Products,specific Product,add with image,update and delete.
 - **Rewiew:** Fetch all Reviews,add,update and delete.
 - **Upload Images:** Upload and manage images to be included in Product or Brands.
-
+- **Pagination:** Paginate large data sets for efficient retrieval and presentation.
+- **Search:** Field that you want to search by it.
 
 ## Installation
 1. **Clone the Repository:**

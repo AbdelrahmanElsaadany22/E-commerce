@@ -6,7 +6,10 @@ import userModel from "../models/user.model.js";
 
 
 export const getAllUser=catchAsyncError(async (req,res)=>{
-	const users = await auserModel.find()
+	const apiFeatures = new ApiFeatures(userModel.find(), req.query).paginate(
+		10
+	)
+	const users = await apiFeatures.query
 	res.json({ users })
 })
 

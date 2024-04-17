@@ -1,6 +1,6 @@
+import { ApiFeatures } from "../../../utils/ApiFeatures.js";
 import { catchAsyncError } from "../../../utils/error.handler.js";
 import categoryModel from "../models/category.model.js";
-
 export const getcategoryBySlug=catchAsyncError(async(req,res)=>{
     const { categorySlug } = req.params
     const thecategory=await categoryModel.findOne({slug:categorySlug})
@@ -13,8 +13,12 @@ export const getcategoryBySlug=catchAsyncError(async(req,res)=>{
 })
 
 export const getAllcategories=catchAsyncError(async (req,res)=>{    
-    const categories=await categoryModel.find()
-    res.status(201).json({categories})
+	const apiFeatures = new ApiFeatures(
+		categoryModel.find(),
+		req.query
+	).paginate(10)
+    const categories = await apiFeatures.query
+	res.json({ categories })
 })
 
 export const addCategory=catchAsyncError(async(req,res)=>{

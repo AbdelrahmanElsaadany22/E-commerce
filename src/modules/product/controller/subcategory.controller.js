@@ -25,14 +25,15 @@ res.json({ subCategory })
 })
 
 export const getSubcategories=catchAsyncError(async(req,res)=>{
-    const {categorySlug}=req.params
-    const categories=await categoryModel.findOne({slug:categorySlug})
-    if(!categories)
-    {
-    res.status(404).json({message:"Category not found"})
-    }
-    const subcategories = await subcategoryModel.find({category_id: category._id})
-	res.json({ subcategories })
+	const { subcategorySlug, categorySlug } = req.params
+	const category = await categoryModel.findOne({ slug: categorySlug })
+	if (!category) res.status(404).json({ message: 'Category not found' })
+	
+	const subcategory = await subcategoryModel.findOne({
+		slug: subcategorySlug,
+		category_id: category._id,
+	})
+	res.json({ subcategory })
 })
 
 export const addSubcategory=catchAsyncError(async(req,res)=>{

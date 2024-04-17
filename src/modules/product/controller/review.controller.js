@@ -4,14 +4,14 @@ import productModel from "../models/product.model.js";
 import reviewModel from "../models/review.model.js";
 
 export const getReviews=catchAsyncError(async(req,res)=>{
-const{productSlug}=req.params
-const product=await productModel.findOne({slug:productSlug})
-if(!product){
-    res.status(404).json({message:"Product not founded"})
-}
-
-const reviews=await reviewModel.find()
-res.json({reviews})
+	const { productSlug } = req.params
+	const product = await productModel.findOne({ slug: productSlug })
+	if (!product) throw new AppError('Invalid product slug', 404)
+	const apiFeatures = new ApiFeatures(reviewModel.find(), req.query).paginate(
+		10
+	)
+	const reviews = await apiFeatures.query
+	res.json({ reviews })
 })
 export const addReview = catchAsyncError(async (req, res) => {
 	const { productSlug } = req.params

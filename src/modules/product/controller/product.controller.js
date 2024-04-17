@@ -5,11 +5,12 @@ import { catchAsyncError } from '../../../utils/error.handler.js'
 import { makeImage } from '../../image/utils/image.utils.js'
 import subcategoryModel from '../models/subcategory.model.js'
 import imageOnProductModel from '../models/imageOnProduct.model.js'
-
-
+import { ApiFeatures } from '../../../utils/ApiFeatures.js'
 
 export const getAllProduct=catchAsyncError(async(req,res,next)=>{
-	const products = await productModel.find()
+	const apiFeature = new ApiFeatures(productModel.find(), req.query)
+		.paginate(50).search(['title', 'description'])
+	const products = await apiFeature.query
 	res.json({ products })
 })
 export const getProduct = catchAsyncError(async (req, res, next) => {
