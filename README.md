@@ -31,7 +31,7 @@
 - **Coupon:** Fetch all Coupuns,specific coupon,update and delete.
 - **Brand:** Fetch all Brands,specific Brand,add with image or no,update and delete.
 - **Category:** Fetch all Categories,specific Category,add,update and delete.
-- **SubCategory: **Fetch all Subcategories,specific subcategory,add,update and delete.
+- **SubCategory:** Fetch all Subcategories,specific subcategory,add,update and delete.
 - **Product:** Fetch all Products,specific Product,add with image,update and delete.
 - **Rewiew:** Fetch all Reviews,add,update and delete.
 - **Upload Images:** Upload and manage images to be included in Product or Brands.
