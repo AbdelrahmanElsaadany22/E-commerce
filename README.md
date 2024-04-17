@@ -1,6 +1,6 @@
 ## E-commerce app
 ## Description
-   simple social media API.
+   simple E-commerce API.
 ## Technologies
 
 <div>
