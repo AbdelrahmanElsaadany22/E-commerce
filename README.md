@@ -25,16 +25,17 @@
 ## **Key Features:**
 
 - **User Authentication:** Secure user authentication endpoints using JWT tokens.
-- **Posting Updates:** Create, retrieve, update, and delete posts or status updates.
-- **User Profiles:** Fetch and update user profiles, including profile pictures, bio, and contact information.
-- **Friend/Follower Interactions:** Follow, unfollow, and retrieve lists of friends or followers.
-- **Search Functionality:** Search for users, posts, or hashtags within the social network.
-- **Upload Images:** Upload and manage images to be included in posts or user profiles.
-- **Pagination:** Paginate large data sets for efficient retrieval and presentation.
-- **Story:** Share temporary updates that disappear after a set period.
-- **Like:** Like or favorite posts and updates.
-- **Comment:** Interact with posts by leaving comments or replies.
-- **Customizable Middleware:** Easily extend and customize functionality using Express.js middleware.
+- **Cart Option:** Create, retrieve, update, delete and ensure stock is available.
+- **User Profiles:** Fetch and update user profiles,fetch all users,including profile pictures,and contact information.
+- **Order Option:** Fetch all orders to user, make online payment with Stripe, make COD order.
+- **Coupon:**Fetch all Coupuns,specific coupon,update and delete.
+- **Brand:**Fetch all Brands,specific Brand,add with image or no,update and delete.
+- **Category:**Fetch all Categories,specific Category,add,update and delete.
+- **SubCategory:**Fetch all Subcategories,specific subcategory,add,update and delete.
+- **Product:**Fetch all Products,specific Product,add with image,update and delete.
+- **Rewiew:**Fetch all Reviews,add,update and delete.
+- **Upload Images:** Upload and manage images to be included in Product or Brands.
+
 
 ## Installation
 1. **Clone the Repository:**
