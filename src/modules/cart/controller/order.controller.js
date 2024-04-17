@@ -93,6 +93,7 @@ export const makePaymentSession = catchAsyncError(async (req, res) => {
 
 
 export const makeOnlineOrder=async(data)=>{
+	console.log("hamananan")
 	const cart =cartModel.findOne({user_id})
 	const order =await orderModel.create({
 		user_id:data.client_reference_id,
@@ -113,5 +114,5 @@ export const makeOnlineOrder=async(data)=>{
 		),
 		phone_number:'' //def
 	})
-	
+
 }

@@ -22,8 +22,8 @@ const bootstrap = (app) =>
 		}
 		switch (event.type) {
 		  case 'checkout.session.completed':
-			const data = event.data.object;
-			console.log(data)
+{			const data = event.data.object;
+			console.log(data)}
 			await makeOnlineOrder(data)
 			break;
 		  default:
