@@ -84,106 +84,93 @@
    }
 ## Project Structure
  ```powershell
-.
-├── prisma/
-│   ├── migrations
-│   └── schema.prisma
-├── src/
-│   ├── controllers/
-│   │   ├── Auth/
-│   │   │   ├── Auth.index.js
-│   │   │   ├── changePassword.js
-│   │   │   ├── forgotPassword.js
-│   │   │   ├── login.js
-│   │   │   ├── logout.js
-│   │   │   ├── refreshToken.js
-│   │   │   ├── register.js
-│   │   │   ├── resetPassword.js
-│   │   │   ├── verfiyResetPassword.js
-│   │   │   └── verifyEmail.js
-│   │   ├── Comment/
-│   │   │   ├── comment.index.js
-│   │   │   ├── createComment.js
-│   │   │   ├── deleteComment.js
-│   │   │   ├── getASingleComment.js
-│   │   │   ├── getAllCommentsOnAPost.js
-│   │   │   └── updateComment.js
-│   │   ├── Follow/
-│   │   │   ├── follow.index.js
-│   │   │   ├── followOrUnfollow.js
-│   │   │   ├── getAllFollowers.js
-│   │   │   └── getAllFollowings.js
-│   │   ├── Like/
-│   │   │   ├── getAllLikesOnAPost.js
-│   │   │   ├── like.index.js
-│   │   │   └── likeOrUnlike.js
-│   │   ├── Post/
-│   │   │   ├── adminDeletePost.js
-│   │   │   ├── createPost.js
-│   │   │   ├── currentUserDeletePost.js
-│   │   │   ├── getAllPosts.js
-│   │   │   ├── getSinglePost.js
-│   │   │   ├── post.index.js
-│   │   │   ├── searchAboutPost.js
-│   │   │   ├── updatePost.js
-│   │   │   └── userGetAllPosts.js
-│   │   ├── Story/
-│   │   │   ├── createStory.js
-│   │   │   ├── currentUserGetStories.js
-│   │   │   ├── deleteStory.js
-│   │   │   ├── getMyStories.js
-│   │   │   ├── getSingleStory.js
-│   │   │   ├── story.index.js
-│   │   │   └── updateStoryPriv.js
-│   │   └── User/
-│   │       ├── deactiveAccount.js
-│   │       ├── deleteUser.js
-│   │       ├── getAllUsers.js
-│   │       ├── getSingleUser.js
-│   │       ├── searchForUsers.js
-│   │       ├── updateCurrentUser.js
-│   │       ├── updateSingleUserData.js
-│   │       └── user.index.js
-│   ├── functions/
-│   │   ├── Cloudinary/
-│   │   │   └── cloudinary.js
-│   │   ├── Mail/
-│   │   │   └── email.config.js
-│   │   └── multer/
-│   │       └── multer.js
-│   ├── hooks/
-│   │   └── index.hooks.js
-│   ├── middlewares/
-│   │   ├── auth.middleware.js
-│   │   ├── errorHandler.js
-│   │   └── validation.middleware.js
-│   ├── routes/
-│   │   ├── auth.routes.js
-│   │   ├── comment.routes.js
-│   │   ├── follow.routes.js
-│   │   ├── like.routes.js
-│   │   ├── post.routes.js
-│   │   ├── story.routes.js
-│   │   └── user.routes.js
-│   ├── utils/
-│   │   ├── validation/
-│   │   │   ├── auth.validator.js
-│   │   │   ├── comment.validator.js
-│   │   │   ├── follow.validator.js
-│   │   │   ├── like.validator.js
-│   │   │   ├── post.validator.js
-│   │   │   ├── story.validator.js
-│   │   │   └── user.validator.js
-│   │   ├── APIError.js
-│   │   ├── ValidForActions.js
-│   │   ├── app.setup.js
-│   │   ├── createToken.js
-│   │   └── hashingPassword.js
-│   └── app.js
-├── .gitignore
-├── README.md
-├── package-lock.json
-└── package.json
+[src]
+    ├── bootstrab.js
+    ├── [middlewares]
+        ├── upload.middleware.js
+        └── validation.js
+    ├── [modules]
+        ├── [auth]
+            ├── auth.controller.js
+            ├── auth.middleware.js
+            ├── auth.routes.js
+            └── auth.validate.js
+        ├── [cart]
+            ├── [controller]
+                ├── cart.controller.js
+                └── order.controller.js
+            ├── [middlewares]
+                └── cart.middleware.js
+            ├── [models]
+                ├── cart.model.js
+                └── order.model.js
+            ├── [routers]
+                ├── cart.routes.js
+                └── order.routes.js
+            └── [validations]
+                └── order.validations.js
+        ├── [coupon]
+            ├── [controller]
+                └── coupon.controller.js
+            ├── [models]
+                └── coupon.model.js
+            ├── [routers]
+                └── coupon.routes.js
+            └── [validations]
+                └── coupon.validations.js
+        ├── [image]
+            ├── [middlewares]
+                └── image.middleware.js
+            ├── [models]
+                └── image.model.js
+            └── [utils]
+                └── image.utils.js
+        ├── [product]
+            ├── [controller]
+                ├── brand.controller.js
+                ├── category.controller.js
+                ├── product.controller.js
+                ├── review.controller.js
+                └── subcategory.controller.js
+            ├── [middlewares]
+                └── product.middlewares.js
+            ├── [models]
+                ├── brand.model.js
+                ├── category.model.js
+                ├── imageOnProduct.model.js
+                ├── product.model.js
+                ├── review.model.js
+                └── subcategory.model.js
+            ├── [routers]
+                ├── brand.routes.js
+                ├── category.routes.js
+                ├── product.routes.js
+                ├── review.routes.js
+                └── subcategory.routes.js
+            └── [validation]
+                ├── brand.validation.js
+                ├── category.validation.js
+                ├── product.validation.js
+                ├── review.validations.js
+                └── subcategory.validations.js
+        └── [user]
+            ├── [controller]
+                ├── user.controller.js
+                └── wishlist.controller.js
+            ├── [models]
+                └── user.model.js
+            ├── [routers]
+                └── user.routes.js
+            └── [validation]
+                └── wishlist.validations.js
+    ├── [routers]
+        └── v1.routes.js
+    └── [utils]
+        ├── ApiFeatures.js
+        ├── enums.js
+        ├── error.handler.js
+        ├── image.js
+        └── schemas.js
 ```
 ## Schemas Explaination
   1 - **USER SCHEMA** <br>
