@@ -56,19 +56,24 @@
    - **Please first specifiy your database engine**
     ```properties
     ## PORT
-   PORT=0
-DB_STRING="connection-string"
-SECRET="secret string"
-SALT=0
-
-CLOUDINARY_CLOUD_NAME = "cloud name" 
-CLOUDINARY_API_KEY = "cloud-api-key" 
-CLOUDINARY_API_SECRET ="cloud-api-secret" 
-
-MODE=""
-
-STRIPE_SECRET="stripe-sekret-key"
-STRIPE_WEBHOOK_SECRET="STRIPE_WEBHOOK_SECRET"
+    PORT=number 
+    
+    ## Prisma URI
+    DB_STRING=connection-string   
+    
+    ## JWT access token
+    SECRET=secret string
+    SALT=number
+    
+    ## CLOUD CONFIG
+    CLOUDINARY_CLOUD_NAME=cloud name
+    CLOUDINARY_API_KEY=cloud-api-key
+    CLOUDINARY_API_SECRET=cloud-api-secret
+    MODE=""
+    
+    ## STRIPE
+    STRIPE_SECRET=stripe-sekret-key
+    STRIPE_WEBHOOK_SECRET=STRIPE_WEBHOOK_SECRET
 4. **Setting your prisma file**
    ```prisma
     generator client {
