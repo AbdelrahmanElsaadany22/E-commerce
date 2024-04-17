@@ -42,7 +42,7 @@
 1. **Clone the Repository:**
    Use the `git clone` command to clone the GitHub repository to your local machine.
    ```bash
-   git clone https://github.com/0xEbrahim/Social_Media_API
+   git clone https://github.com/AbdelrahmanElsaadany22/ecom
 2. **Initialize a Package.json File (if not already done):**
    If your project doesn't already have a `package.json` file, you can create one by running:
    ```bash
@@ -56,25 +56,19 @@
    - **Please first specifiy your database engine**
     ```properties
     ## PORT
-    PORT=YOUR PORT HERE 
-    
-    ## Prisma URI
-    DATABASE_URL= YOUR DATABASE URI    
-    
-    ## JWT access token
-    JWT_ACC_TOKEN=YOUR JWT ACCESS TOKEN SECRET
-    
-    ## JWT refresh token
-    JWT_REF_TOKEN=YOUR JWT REFRESH TOKEN SECRET
-    
-    ## CLOUD CONFIG
-    CLOUD_NAME=GET IT FROM CLOUNDINARY WEBSITE
-    CLOUD_SECRETS=GET IT FROM CLOUNDINARY WEBSITE
-    CLOUD_KEY=GET IT FROM CLOUNDINARY WEBSITE
-    
-    ## GMAIL
-    MAILER_APP_EMAIL=SENDER EMAIL
-    MAILER_APP_PASSWORD=SENDER PASSWORD
+   PORT=0
+DB_STRING="connection-string"
+SECRET="secret string"
+SALT=0
+
+CLOUDINARY_CLOUD_NAME = "cloud name" 
+CLOUDINARY_API_KEY = "cloud-api-key" 
+CLOUDINARY_API_SECRET ="cloud-api-secret" 
+
+MODE=""
+
+STRIPE_SECRET="stripe-sekret-key"
+STRIPE_WEBHOOK_SECRET="STRIPE_WEBHOOK_SECRET"
 4. **Setting your prisma file**
    ```prisma
     generator client {
