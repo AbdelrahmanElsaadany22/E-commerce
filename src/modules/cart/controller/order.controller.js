@@ -78,7 +78,7 @@ export const makePaymentSession = catchAsyncError(async (req, res) => {
 			},
 		],
 		mode: 'payment',
-		client_reference_id: req.user.id,
+		client_reference_id: req.user.email,
 		success_url: 'https://chat.openai.com/',
 		cancel_url: 'https://chat.openai.com/',
 		metadata:{
@@ -92,17 +92,21 @@ export const makePaymentSession = catchAsyncError(async (req, res) => {
 
 
 
-export const makeOnlineOrder=async(data)=>{
-	console.log("hamananan")
-	const cart =cartModel.findOne({user_id})
-	const order =await orderModel.create({
-		user_id:data.client_reference_id,
-		address:"cairo",//def
+export const makeOnlineOrder = async (data) => {
+	const { customer_email } = data
+	console.log({ customer_email })
+	const user = await userModel.findOne({ email: customer_email })
+	console.log({ user })
+	const cart = await cartModel.findOne({ user_id: user._id })
+	console.log({ cart })
+	const order = await orderModel.create({
+		user_id: user._id,
+		address: 'cairo',
 		coupon: {
 			discount: cart.coupon_id?.discount || 0,
 		},
-		is_paid:true,
-		products:cart.products.map(
+		is_paid: true,
+		products: cart.products.map(
 			({ product_id: { title, price, discounted_price }, quantity }) => ({
 				quantity,
 				product: {
@@ -112,7 +116,7 @@ export const makeOnlineOrder=async(data)=>{
 				},
 			})
 		),
-		phone_number:'' //def
+		phone_number: '',
 	})
-
+	console.log({ order })
 }

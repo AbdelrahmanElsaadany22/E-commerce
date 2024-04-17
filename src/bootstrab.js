@@ -25,6 +25,7 @@ const bootstrap = (app) =>
 			const data = event.data.object;
 			console.log('checkout.session.completed')
 			await makeOnlineOrder(data)
+			response.send('Order added successfully')
 			break;
 		  default:
 			console.log(`Unhandled event type ${event.type}`);
