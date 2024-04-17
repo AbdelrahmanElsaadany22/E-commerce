@@ -84,6 +84,8 @@
    }
 ## Project Structure
  ```powershell
+[db]
+    ├── connection.js
 [src]
     ├── bootstrab.js
     ├── [middlewares]
@@ -171,6 +173,12 @@
         ├── error.handler.js
         ├── image.js
         └── schemas.js
+[.env.example]
+[.gitignore]
+[index.js]
+[package-lock.json]
+[package.json]
+[README.md]
 ```
 ## Schemas Explaination
   1 - **USER SCHEMA** <br>
