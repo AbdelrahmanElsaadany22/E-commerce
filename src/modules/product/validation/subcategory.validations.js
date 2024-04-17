@@ -23,7 +23,7 @@ export const addSubcategorySchema = Joi.object({
 	},
 	params: { categorySlug: Joi.string().required() },
 	query: {},
-	files: Joi.object().required(),
+	files: Joi.object(),
 })
 
 export const updateSubcategorySchema = Joi.object({

@@ -81,9 +81,37 @@ export const makePaymentSession = catchAsyncError(async (req, res) => {
 		client_reference_id: req.user.id,
 		success_url: 'https://chat.openai.com/',
 		cancel_url: 'https://chat.openai.com/',
-		
+		metadata:{
+			address:req.body.address,
+		},
 		customer_email: req.user.email,
 	})
 
 	res.json({ session })
 })
+
+
+
+export const makeOnlineOrder=async(data)=>{
+	const cart =cartModel.findOne({user_id})
+	const order =await orderModel.create({
+		user_id:data.client_reference_id,
+		address:"cairo",//def
+		coupon: {
+			discount: cart.coupon_id?.discount || 0,
+		},
+		is_paid:true,
+		products:cart.products.map(
+			({ product_id: { title, price, discounted_price }, quantity }) => ({
+				quantity,
+				product: {
+					title,
+					price,
+					discounted_price,
+				},
+			})
+		),
+		phone_number:'' //def
+	})
+	
+}

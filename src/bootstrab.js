@@ -5,9 +5,10 @@ import morgan from 'morgan'
 import { AppError, catchAsyncError } from './utils/error.handler.js'
 import v1Router from './routers/v1.routes.js'
 import stripe from 'stripe'
+import { makeOnlineOrder } from './modules/cart/controller/order.controller.js'
 const bootstrap = (app) =>
  {
-	app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+	app.post('/webhook', express.raw({type: 'application/json'}),catchAsyncError(async(request, response) => {
 		const sig = request.headers['stripe-signature'];
 	  
 		let event;
@@ -21,13 +22,15 @@ const bootstrap = (app) =>
 		}
 		switch (event.type) {
 		  case 'checkout.session.completed':
-			const checkoutSessionCompleted = event.data.object;
+			const data = event.data.object;
+			console.log(data)
+			await makeOnlineOrder(data)
 			break;
 		  default:
 			console.log(`Unhandled event type ${event.type}`);
 		}
 		response.send();
-	  });
+	  }));
 	  
 
 	app.use(express.json())
