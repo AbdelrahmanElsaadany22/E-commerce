@@ -14,6 +14,7 @@ export const signin = catchAsyncError(async (req, res) => {
 	res.json({ token }) 
 })
 export const signup=catchAsyncError(async(req,res)=>{
+	console.log("haman")
     const {name,email,password,role}=req.body
     const hashed=bcrypt.hashSync(password,+process.env.SALT)
     userModel.create({
