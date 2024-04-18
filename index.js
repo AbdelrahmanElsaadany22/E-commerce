@@ -6,9 +6,9 @@ import {v2 as cloudinary}from 'cloudinary'
 
 
 cloudinary.config({
-    cloud_name: 'dghw5xgjh',
-    api_key: '312575985147657',
-    api_secret:'HWp0TZfRHT_3iUWeYQt7lfZs4wc'
+    cloud_name:CLOUDINARY_CLOUD_NAME,
+    api_key:CLOUDINARY_API_KEY,
+    api_secret:CLOUDINARY_API_SECRET
   });
 
 const app = express()
