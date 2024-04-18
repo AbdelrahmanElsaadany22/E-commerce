@@ -288,7 +288,7 @@ This schema defines a model called "cart" with various fields and their associat
 ---
 
 10 - **ORDER SCHEMA** <br>
-This schema defines a model called "ORDER" with various fields and their associated attributes:
+This schema defines a model called "order" with various fields and their associated attributes:
 
 - `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
 - `user_id`: A field that refer to the user model.
