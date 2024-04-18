@@ -185,18 +185,20 @@
 - `updatedAt`: A datetime field representing the timestamp when the user account was last updated, automatically updated whenever the user data changes.
 ---
 
-  2 - **PROFILE SCHEMA** <br>
+  2 - **PRODUCT SCHEMA** <br>
   This schema defines a model called "Profile" with various fields and their associated attributes:
 
 - `id`: An integer field that serves as the primary key for identifying profiles. It auto-increments its value.
-- `userId`: An integer field representing the user ID associated with the profile, marked as unique.
-- `bio`: A string field for the user's biography, with a default value of "Not bio yet."
-- `image`: A string field representing the URL of the profile image, optional.
-- `city`: A string field representing the user's city.
-- `website`: A string field representing the URL of the user's website, optional.
-- `user`: A relation to the "User" model, representing the user associated with this profile. It references the `id` field of the "User" model using the `userId` field.
+- `title`: An string field for proudct's name, marked as unique.
+- `slug`:A string field get it from the title, marked as unique.
+- `description`: A string field representing information about the product.
+- `stock`: An integer field representing the product's quantity at the store.
+- `price`: A integer field representing the price of the product.
+- `discounted_price`:  A integer field representing the discounted_price of the product if founded.
+- `cover_image`:  A field refer to the image filed and it is represent the cover image or base image of this product.
+- `features`:  An array of keys and values.
+- `subcategory_id`: A field refer to the subcategory that the product in.
 
-This schema outlines the structure and relationships of a profile entity within a database, including various attributes commonly found in user profile systems.
 
 ---
  3 - **FOLLOW SCHEMA** <br>
