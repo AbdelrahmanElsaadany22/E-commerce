@@ -173,7 +173,7 @@
 ```
 ## Schemas Explaination
   1 - **USER SCHEMA** <br>
-  This schema defines a model called "User" with various fields and their associated attributes:
+  This schema defines a model called "user" with various fields and their associated attributes:
 
 - `id`: An integer field that serves as the primary key for identifying users. It auto-increments its value.
 - `name`: A string field for the user's name.
@@ -186,7 +186,7 @@
 ---
 
   2 - **PRODUCT SCHEMA** <br>
-  This schema defines a model called "Profile" with various fields and their associated attributes:
+  This schema defines a model called "product" with various fields and their associated attributes:
 
 - `id`: An integer field that serves as the primary key for identifying profiles. It auto-increments its value.
 - `title`: An string field for proudct's name, marked as unique.
@@ -201,91 +201,101 @@
 
 
 ---
- 3 - **FOLLOW SCHEMA** <br>
- This schema defines a model called "FollowRelation" with various fields and their associated attributes:
+ 3 - **BRAND SCHEMA** <br>
+ This schema defines a model called "brand" with various fields and their associated attributes:
 
 - `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
-- `followedId`: An integer field representing the ID of the user being followed.
-- `followerId`: An integer field representing the ID of the user who is following.
-- `followed`: A relation to the "User" model, representing the user who is being followed. It references the `id` field of the "User" model using the `followedId` field. This relation is named "followed".
-- `follower`: A relation to the "User" model, representing the user who is following. It references the `id` field of the "User" model using the `followerId` field. This relation is named "follower".
+- `title`: An string field for proudct's name, marked as unique.
+- `slug`:A string field get it from the title, marked as unique.
+- `logo`:  A field refer to the image filed and it is represent the cover image or base image of this brand.
 
-This schema outlines the structure and relationships of a follow relation entity within a database, typically used to establish connections between users for follow/follower functionality.
 
----
-
-4 - **POST SCHEMA** <br>
-This schema defines a model called "Post" with various fields and their associated attributes:
-
-- `id`: An integer field that serves as the primary key for identifying posts. It auto-increments its value and is marked as unique.
-- `userId`: An integer field representing the ID of the user who authored the post.
-- `title`: A string field for the title of the post.
-- `content`: A string field for the content of the post.
-- `image`: An array of strings representing URLs of images associated with the post.
-- `likesCount`: An integer field representing the number of likes received by the post, with a default value of 0.
-- `commentsCount`: An integer field representing the number of comments made on the post, with a default value of 0.
-- `postedAt`: A datetime field representing the timestamp when the post was created, with a default value of the current timestamp.
-- `updatedAt`: A datetime field representing the timestamp when the post was last updated, automatically updated whenever the post data changes.
-- `privacy`: A field representing the privacy settings of the post, with a default value of "FOLLOWERS".
-- `comments`: A relation to the "Comment" model, representing the comments made on the post.
-- `likes`: A relation to the "Like" model, representing the likes received by the post.
-- `author`: A relation to the "User" model, representing the user who authored the post. It references the `id` field of the "User" model using the `userId` field.
-
-This schema outlines the structure and relationships of a post entity within a database, including various attributes commonly found in social media or blogging platforms.
 
 ---
 
-5 - **STORY SCHEMA** <br>
-This schema defines a model called "Story" with various fields and their associated attributes:
+4 - **CATEGORY SCHEMA** <br>
+This schema defines a model called "category" with various fields and their associated attributes:
 
-- `id`: An integer field that serves as the primary key for identifying stories. It auto-increments its value and is marked as unique.
-- `userId`: An integer field representing the ID of the user who created the story.
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `title`: An string field for proudct's name, marked as unique.
+- `slug`:A string field get it from the title, marked as unique.
+- `image`:  A field refer to the image filed and it is represent the cover image or base image of this brand.
+
+
+---
+
+5 - **IMAGEONPRODUCT SCHEMA** <br>
+This schema defines a model called "imageOnProduct" with various fields and their associated attributes:
+
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `product_id`: An integer field that refer the product model.
 - `image`: A string field representing the URL of the image associated with the story.
-- `privacy`: A field representing the privacy settings of the story, with a default value of "FOLLOWERS".
-- `user`: A relation to the "User" model, representing the user who created the story. It references the `id` field of the "User" model using the `userId` field.
 
-This schema outlines the structure and relationships of a story entity within a database, typically used in social media platforms or similar applications.
 
 ---
 
-6 - **LIKE SCHEMA** <br>
-This schema defines a model called "Like" with various fields and their associated attributes:
+6 - **REVIEW SCHEMA** <br>
+This schema defines a model called "review" with various fields and their associated attributes:
 
-- `postId`: An integer field representing the ID of the post that is being liked.
-- `userId`: An integer field representing the ID of the user who liked the post.
-- `Post`: A relation to the "Post" model, representing the post that is being liked. It references the `id` field of the "Post" model using the `postId` field.
-- `User`: A relation to the "User" model, representing the user who liked the post. It references the `id` field of the "User" model using the `userId` field.
-
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `text`: A string field representing the opinin of specific user about specific product.
+- `rating`: An Enum contain values(1,2,3,4,5).
+- `product_id`: A field that refer the product model.
+- `user_id`: A field that refer the user model.
 This schema outlines the structure and relationships of a like entity within a database, typically used to establish connections between users and posts for the like functionality. Additionally, the combination of `postId` and `userId` is used as a composite primary key for the "Like" model.
 
 ---
 
-7 - **Comment SCHEMA** <br>
-This schema defines a model called "Comment" with various fields and their associated attributes:
+7 - **SUBCATEGORY SCHEMA** <br>
+This schema defines a model called "subcategory" with various fields and their associated attributes:
 
-- `id`: An integer field that serves as the primary key for identifying comments. It auto-increments its value and is marked as unique.
-- `postId`: An integer field representing the ID of the post on which the comment is made.
-- `userId`: An integer field representing the ID of the user who made the comment.
-- `content`: A string field representing the content of the comment.
-- `Post`: A relation to the "Post" model, representing the post on which the comment is made. It references the `id` field of the "Post" model using the `postId` field.
-- `User`: A relation to the "User" model, representing the user who made the comment. It references the `id` field of the "User" model using the `userId` field.
-
-This schema outlines the structure and relationships of a comment entity within a database, typically used in social media platforms or similar applications.
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `name`: An string field for subcategory's name, marked as unique.
+- `slug`:A string field get it from the title, marked as unique.
+- `category_id`:  A field refer to the category model .
 
 ---
 
-8 - **ENUMS** <br>
-This schema defines two enums:
+8 - **IMAGE SCHEMA** <br>
+This schema defines a model called "image" with various fields and their associated attributes:
 
-1. `Role`: Represents the role of a user with two possible values:
-   - `USER`: Indicates a regular user.
-   - `ADMIN`: Indicates an administrator user.
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `name`: An string field for subcategory's name, marked as unique.
+- `slug`:A string field get it from the title, marked as unique.
+- `path`:  An string filed refer to the image url .
 
-2. `Privacy`: Represents the privacy settings with three possible values:
-   - `PUBLIC`: Indicates that the content is visible to everyone.
-   - `PRIVATE`: Indicates that the content is visible only to the owner.
-   - `FOLLOWERS`: Indicates that the content is visible only to the followers of the owner.
+---
 
-These enums define a set of predefined values that can be used as attributes in the schema for better organization and clarity.
 
- 
+ 9 - **COUPON SCHEMA** <br>
+This schema defines a model called "coupon" with various fields and their associated attributes:
+
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `code`: An string field for coupon's name, marked as unique.
+- `expiry`:A date field refer to the time that the code will end.
+- `discount`:  A integer filed that refer to the number of discount.
+
+---
+
+ 10 - **CART SCHEMA** <br>
+This schema defines a model called "cart" with various fields and their associated attributes:
+
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `user_id`: A field that refer to the user model.
+- `products`:An array that contain product_id and the quantity of you need to buy .
+- `coupon_id`:  A field that refer to the coupon model.
+
+---
+
+10 - **ORDER SCHEMA** <br>
+This schema defines a model called "ORDER" with various fields and their associated attributes:
+
+- `id`: An integer field that serves as the primary key for identifying follow relations. It auto-increments its value.
+- `user_id`: A field that refer to the user model.
+- `products`:An array that contain product_id and the quantity of you need to buy .
+- `coupon`:  A field that refer to the coupon model.
+- `address`:  An string filed that refer to the address of the user.
+- `phone_number`:  An string filed that refer to the phone number of the user.
+- `payment_type`:  An enum filed that contain two options (COD,card) and the default is COD.
+- `is_paid`:  An Boolean filed that refer to the state of the order paied or not and the default is false.
+- `is_deliverd`:  An Boolean filed that refer to the state of the order deleverd or not and the default is false.
