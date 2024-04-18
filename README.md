@@ -180,25 +180,9 @@
 - `email`: A string field for the user's email address, marked as unique.
 - `password`: A string field for the user's password.
 - `role`: A field representing the user's role, with a default value of "USER".
-- `isActive`: A boolean field indicating whether the user account is active, with a default value of true.
+- `wishList`: reference to product Schema , that refer to the products that user hope to buy.
 - `createdAt`: A datetime field representing the timestamp when the user account was created, with a default value of the current timestamp.
 - `updatedAt`: A datetime field representing the timestamp when the user account was last updated, automatically updated whenever the user data changes.
-- `passwordResetToken`: A string field for storing a token used for password reset.
-- `passwordResetTokenVerfied`: A boolean field indicating whether the password reset token has been verified.
-- `passwordResetTokenExpire`: A string field representing the expiry date of the password reset token.
-- `passwordChangedAt`: A string field representing the timestamp when the user's password was last changed.
-- `emailVerificationToken`: A string field for storing a token used for email verification, marked as unique.
-- `emailVerified`: A boolean field indicating whether the user's email address has been verified, with a default value of false.
-- `comments`: A relation to the "Comment" model, representing the comments made by the user.
-- `likes`: A relation to the "Like" model, representing the likes made by the user.
-- `posts`: A relation to the "Post" model, representing the posts created by the user.
-- `profile`: A relation to the "Profile" model, representing the user's profile information.
-- `stories`: A relation to the "Story" model, representing the stories created by the user.
-- `followers`: A relation to the "FollowRelation" model, representing the users who are following this user.
-- `following`: A relation to the "FollowRelation" model, representing the users whom this user is following.
-  
-This schema outlines the structure and relationships of a user entity within a database, including various attributes and associations commonly found in user management systems.
-
 ---
 
   2 - **PROFILE SCHEMA** <br>

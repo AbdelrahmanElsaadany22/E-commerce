@@ -21,10 +21,6 @@ const userSchema =new mongoose.Schema({
         enum: ['USER', 'ADMIN'],
         default: 'USER',
     },
-    blocked: {
-        type: Boolean,
-        default: false,
-    },
     wishlist: [
         {
             type: mongoose.Schema.Types.ObjectId,
