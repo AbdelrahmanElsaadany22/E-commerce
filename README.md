@@ -6,7 +6,6 @@
 <div>
     
   ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
-  ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
   <br>
   <center>
   
@@ -70,19 +69,10 @@
     CLOUDINARY_API_KEY=cloud-api-key
     CLOUDINARY_API_SECRET=cloud-api-secret
     MODE=""
-    
+
     ## STRIPE
     STRIPE_SECRET=stripe-sekret-key
     STRIPE_WEBHOOK_SECRET=STRIPE_WEBHOOK_SECRET
-4. **Setting your prisma file**
-   ```prisma
-    generator client {
-      provider = "CHOOSE THE CLIENT"
-    }
-   datasource db {
-      provider = "YOUR DATABASE"
-      url      = env("YOUR ENV DATABASE URI")
-   }
 ## Project Structure
  ```powershell
 [db]
